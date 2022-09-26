@@ -1,0 +1,14 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    search unsuccessful
+{% endblock %}
+
+{% block body %}
+<h1> Search unsuccessful. Maybe you mean one of this encyclopeidas: </h1>
+<ul>
+    {% for entry in entrysubstring %}
+        <li><a href="/wiki/{{entry}}">{{entry}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
