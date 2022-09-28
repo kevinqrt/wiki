@@ -7,10 +7,11 @@ Create Page
 {% block body %}
     <h1> Create Your Encyclopedia Entry </h1> <br>
     <form action="{% url 'create' %}" method = "POST">
-        {% csrf_token %}
-        <input class="text" type="text" name="q" placeholder="Enter Title"> <br> <br>
-        <label> <h6>Create content of you Encyclopedia Entry:</h6></label> <br>
-        <textarea name="content" rows="1"></textarea> <br>
+        {% csrf_token %} 
+        <label> <h6>Enter Title:</h6></label> <br>
+        <input class="text" type="text" name="title"> <br> <br>
+        <label> <h6>Create content:</h6></label> <br>
+        <textarea name="content"></textarea> <br>
         <input type="submit" value="Submit">
     </form>
 

@@ -2,7 +2,9 @@ from ast import If
 from email import message
 from http.client import HTTPResponse
 from pickle import GET
-from tkinter import E, Entry
+from this import d
+from tkinter import E, N, Entry
+from venv import create
 from django.shortcuts import render
 
 import markdown
@@ -30,6 +32,7 @@ def entry(request, entry):
 
 def search(request):
     q = request.POST['q']
+    q.lower()
     entries = util.list_entries()
     entrysubstring = []
 
@@ -44,13 +47,25 @@ def search(request):
         elif q in entry:
                 entrysubstring.append(entry)
 
+
     return render(request, "encyclopedia/searchnotsuccess.html", {
         "entrysubstring": entrysubstring
     })
 
 def createpage(request):
 
+    if request.method == "POST":
+        title = request.POST['title']
+        content = request.POST['content']
+        with open("entries/" + title + '.md', 'w+') as f:
+            f.write("#" + title + '\n' + content)
+            f.close()
+        return render(request, "encyclopedia/createpage.html", {
+
+        })
 
     return render(request, "encyclopedia/createpage.html", {
-        
+
     })
+    
+
