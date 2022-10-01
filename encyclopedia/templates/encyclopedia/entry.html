@@ -6,4 +6,10 @@
 
 {% block body %}
     {{entry|safe}}
+
+    <form action= "{% url 'editentry' %}" method = "POST">
+        {% csrf_token %}
+        <input type="hidden" name="title" value="{{entryTitle}}">
+        <input type="Submit" value="Edit Encyclopedia">
+    </form>
 {% endblock %}
